@@ -106,6 +106,14 @@ void getDestinationService(const std::string& dest_namespace,
                              ->toString()
                        : "unknown";
 
+  std::string route_name;
+  getValue({"route_name"}, &route_name);
+  if (route_name == "block_all") {
+      cluster_name = kBlackHoleCluster;
+  } else if (route_name == "allow_any") {
+      cluster_name = kPassThroughCluster;
+  }
+
   if (cluster_name == kBlackHoleCluster ||
       cluster_name == kPassThroughCluster ||
       cluster_name == kInboundPassthroughClusterIpv4 ||
