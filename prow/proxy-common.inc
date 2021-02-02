@@ -57,9 +57,9 @@ if [[ -n "${GOOGLE_APPLICATION_CREDENTIALS:-}" ]]; then
 
   # Use RBE when logged in.
   # dont use RBE for istio-private
-  # BAZEL_BUILD_RBE_INSTANCE="${BAZEL_BUILD_RBE_INSTANCE:-projects/istio-testing/instances/default_instance}"
-  # BAZEL_BUILD_RBE_CACHE="${BAZEL_BUILD_RBE_CACHE:-grpcs://remotebuildexecution.googleapis.com}"
-  # BAZEL_BUILD_RBE_JOBS="${BAZEL_BUILD_RBE_JOBS:-200}"
+  BAZEL_BUILD_RBE_INSTANCE="${BAZEL_BUILD_RBE_INSTANCE-projects/istio-testing/instances/default_instance}"
+  BAZEL_BUILD_RBE_CACHE="${BAZEL_BUILD_RBE_CACHE-grpcs://remotebuildexecution.googleapis.com}"
+  BAZEL_BUILD_RBE_JOBS="${BAZEL_BUILD_RBE_JOBS:-200}"
   if [[ -n "${BAZEL_BUILD_RBE_INSTANCE}" ]]; then
     if [[ "${BAZEL_BUILD_RBE_JOBS}" -gt 0 ]]; then
       echo "Using RBE: ${BAZEL_BUILD_RBE_INSTANCE} (execute)"
